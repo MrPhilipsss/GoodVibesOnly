@@ -9,12 +9,10 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 
 const navItems = [
-  { name: "Home", href: "hero" },
-  { name: "About", href: "about" },
-  { name: "Gallery", href: "gallery" },
-  { name: "Appointment", href: "appointment" },
-  { name: "Testimonials", href: "testimonials" },
+  { name: "Home", href: "home" },
   { name: "Services", href: "services" },
+  { name: "Staff", href: "staff" },
+  { name: "Gallery", href: "gallery" },
   { name: "Contact", href: "contact" },
 ];
 

@@ -6,7 +6,6 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import LoadingScreen from "@/components/layout/loading";
 
-
 function Router() {
   return (
     <Switch>
