@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "Services", href: "#services" },
-  { name: "Staff", href: "#staff" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "home" },
+  { name: "Services", href: "services" },
+  { name: "Staff", href: "staff" },
+  { name: "Gallery", href: "gallery" },
+  { name: "Contact", href: "contact" },
 ];
 
 export default function Navbar() {
@@ -41,12 +41,18 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors"
+                href={`#${item.href}`}
+                className="text-sm font-medium hover:text-primary transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
+                    smoothScrollTo(item.href, 1500);
+                  });
+                }}
               >
                 {item.name}
               </a>
@@ -57,32 +63,40 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <div className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-foreground hover:text-primary transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-                <Button
-                  className="w-full"
-                  onClick={() => window.open("https://booksy.com", "_blank")}
-                >
-                  Book Now
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
                 </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="flex flex-col space-y-4 mt-8">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.name}
+                      href={`#${item.href}`}
+                      className="text-lg font-medium hover:text-primary transition-colors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
+                          smoothScrollTo(item.href, 1500);
+                        });
+                      }}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                  <Button
+                    className="w-full"
+                    onClick={() => window.open("https://booksy.com", "_blank")}
+                  >
+                    Book Now
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </nav>
