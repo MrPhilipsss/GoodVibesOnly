@@ -7,6 +7,9 @@ interface PageTransitionProps {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   useEffect(() => {
+    // Ensure content is visible by scrolling to top on page load/transition
+    window.scrollTo(0, 0);
+    
     // Restore smooth scrolling behavior for browser's back/forward navigation
     const handleHashChange = () => {
       const hash = window.location.hash.substring(1);
@@ -26,10 +29,15 @@ export default function PageTransition({ children }: PageTransitionProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      className="min-h-screen"
+      onAnimationComplete={() => {
+        // Ensure content is visible after animation completes
+        window.scrollTo(0, 0);
+      }}
     >
       {children}
     </motion.div>
