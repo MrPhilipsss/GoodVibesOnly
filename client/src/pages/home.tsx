@@ -5,6 +5,7 @@ import Staff from "@/components/sections/staff";
 import Gallery from "@/components/sections/gallery";
 import Contact from "@/components/sections/contact";
 import Navbar from "@/components/layout/navbar";
+import Testimonials from "@/components/sections/testimonials"; // Added import for Testimonials component
 
 const fadeInUp = {
   initial: { y: 20, opacity: 0 },
@@ -20,6 +21,9 @@ export default function Home() {
       <main>
         <motion.div {...fadeInUp}>
           <Hero />
+        </motion.div>
+        <motion.div {...fadeInUp}>
+          <Testimonials /> {/* Added Testimonials component */}
         </motion.div>
         <motion.div {...fadeInUp}>
           <Services />

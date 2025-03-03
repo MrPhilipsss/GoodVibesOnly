@@ -52,7 +52,7 @@ export default function Hero() {
             <Button
               size="lg"
               className="bg-[#B8A088] hover:bg-[#9A846E] text-white px-8 py-6 text-lg"
-              onClick={() => window.open("https://booksy.com", "_blank")}
+              onClick={() => window.open("https://booksy.com/pl-pl/dl/show-business/232302", "_blank")}
             >
               Book Your Appointment
             </Button>
