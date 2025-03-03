@@ -56,7 +56,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <img src="/gvo-logo-navbar.png" alt="GVO Logo" className="h-8" /> {/* Replaced logo */}
+          <img src="/gvo-logo-loading.png" alt="GVO Logo" className="h-8" /> {/* Replaced logo */}
           <span className="ml-2 text-xl font-bold">Good Vibes Only</span>
         </a>
 
