@@ -32,8 +32,16 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="text-2xl font-semibold text-primary">
-            Beauty Haven
+          <a href="#" className="flex items-center space-x-2">
+            <img
+              src="/attached_assets/IMG_1150.jpeg"
+              alt="Good Vibes Only Logo"
+              className="h-12 w-auto"
+            />
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold text-primary">Good Vibes Only</span>
+              <span className="text-sm text-muted-foreground">Zuza Kwiatek</span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
@@ -47,7 +55,9 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
-            <Button>Book Now</Button>
+            <Button onClick={() => window.open("https://booksy.com", "_blank")}>
+              Book Now
+            </Button>
           </div>
 
           {/* Mobile Navigation */}
@@ -68,7 +78,12 @@ export default function Navbar() {
                     {item.name}
                   </a>
                 ))}
-                <Button className="w-full">Book Now</Button>
+                <Button 
+                  className="w-full"
+                  onClick={() => window.open("https://booksy.com", "_blank")}
+                >
+                  Book Now
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
