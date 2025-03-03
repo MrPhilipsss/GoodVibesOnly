@@ -71,39 +71,36 @@ export default function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px]">
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={`#${item.href}`}
-                      className="text-lg font-medium hover:text-primary transition-colors"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        // Import the close function from Sheet context
-                        const sheet = document.querySelector('[data-state="open"]');
-                        if (sheet) {
-                          // Find the close button and click it
-                          const closeButton = sheet.querySelector('[data-radix-collection-item]');
-                          if (closeButton instanceof HTMLElement) {
-                            closeButton.click();
-                          }
-                        }
-                        // Then scroll to the section
-                        import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
-                          smoothScrollTo(item.href, 1500);
-                        });
-                      }}
+                {({ setOpen }) => (
+                  <div className="flex flex-col space-y-4 mt-8">
+                    {navItems.map((item) => (
+                      <a
+                        key={item.name}
+                        href={`#${item.href}`}
+                        className="text-lg font-medium hover:text-primary transition-colors"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // Close the sheet
+                          setOpen(false);
+                          // Then scroll to the section
+                          setTimeout(() => {
+                            import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
+                              smoothScrollTo(item.href, 1500);
+                            });
+                          }, 100);
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                    <Button
+                      className="w-full"
+                      onClick={() => window.open("https://booksy.com", "_blank")}
                     >
-                      {item.name}
-                    </a>
-                  ))}
-                  <Button
-                    className="w-full"
-                    onClick={() => window.open("https://booksy.com", "_blank")}
-                  >
-                    Book Now
-                  </Button>
-                </div>
+                      Book Now
+                    </Button>
+                  </div>
+                )}
               </SheetContent>
             </Sheet>
           </div>
