@@ -13,9 +13,9 @@ export default function Hero() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            src="/assets/IMG_1151.jpeg"
+            src="/assets/IMG_1150.jpeg"
             alt="Good Vibes Only Logo"
-            className="w-32 h-32 mx-auto mb-8 rounded-full"
+            className="w-32 h-32 mx-auto mb-8"
           />
           <motion.h1
             initial={{ y: 20, opacity: 0 }}

@@ -34,14 +34,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
             <img
-              src="/assets/IMG_1150.jpeg"
+              src="/assets/IMG_1151.jpeg"
               alt="Good Vibes Only Logo"
-              className="h-12 w-auto"
+              className="h-12 w-12 rounded-full"
             />
-            <div className="flex flex-col">
-              <span className="text-lg font-semibold text-primary">Good Vibes Only</span>
-              <span className="text-sm text-muted-foreground">Zuza Kwiatek</span>
-            </div>
           </a>
 
           {/* Desktop Navigation */}
