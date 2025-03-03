@@ -15,9 +15,9 @@ export default function PageTransition({ children }: PageTransitionProps) {
       if (hash) {
         const element = document.getElementById(hash);
         if (element) {
-          import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
-            smoothScrollTo(hash, 1500);
-          });
+          const yOffset = -80; // Offset for navbar height
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({top: y, behavior: 'smooth'});
         }
       }
     };
