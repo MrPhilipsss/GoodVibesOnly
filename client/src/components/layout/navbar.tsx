@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
             <img
-              src="/attached_assets/IMG_1150.jpeg"
+              src="/assets/IMG_1150.jpeg"
               alt="Good Vibes Only Logo"
               className="h-12 w-auto"
             />
@@ -78,7 +78,7 @@ export default function Navbar() {
                     {item.name}
                   </a>
                 ))}
-                <Button 
+                <Button
                   className="w-full"
                   onClick={() => window.open("https://booksy.com", "_blank")}
                 >
