@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { 
   Sheet, 
@@ -37,7 +38,7 @@ export default function Navbar() {
 
   const handleLinkClick = (href: string) => {
     setIsOpen(false); // Close mobile menu
-
+    
     // Use dynamic import for the scroll utility
     setTimeout(() => {
       import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
@@ -69,10 +70,7 @@ export default function Navbar() {
               className="text-sm font-medium hover:text-primary transition-colors"
               onClick={(e) => {
                 e.preventDefault();
-                const element = document.getElementById(item.href);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
+                handleLinkClick(item.href);
               }}
             >
               {item.name}
@@ -98,11 +96,10 @@ export default function Navbar() {
                   <a
                     key={item.name}
                     href={`#${item.href}`}
-                    className="block py-2 hover:text-primary transition-colors"
+                    className="text-lg font-medium hover:text-primary transition-colors"
                     onClick={(e) => {
                       e.preventDefault();
                       handleLinkClick(item.href);
-                      setIsOpen(false); // Ensure menu closes
                     }}
                   >
                     {item.name}
