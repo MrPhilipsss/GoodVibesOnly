@@ -7,41 +7,43 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center relative bg-[#F5EFE6] py-20"
     >
-      <div className="container mx-auto px-4">
+      {/* Background Logo */}
+      <div 
+        className="absolute inset-0 z-0 opacity-20"
+        style={{
+          backgroundImage: 'url("/assets/IMG_1150.jpeg")',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <motion.img
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            src="/assets/IMG_1150.jpeg"
-            alt="Good Vibes Only Logo"
-            className="w-32 h-32 mx-auto mb-8"
-          />
-          <motion.h1
+          <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-4xl md:text-6xl font-bold mb-6 text-[#4A4036]"
+            className="space-y-6"
           >
-            Good Vibes Only
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-lg md:text-xl mb-2 text-[#7C6E65]"
-          >
-            by Zuza Kwiatek
-          </motion.p>
+            <h1 className="text-5xl md:text-7xl font-bold text-[#4A4036]">
+              Good Vibes Only
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#7C6E65]">
+              Zuza Kwiatek
+            </h2>
+          </motion.div>
+
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-lg md:text-xl mb-8 text-[#7C6E65]"
+            className="text-lg md:text-xl mt-8 mb-12 text-[#7C6E65] max-w-2xl mx-auto"
           >
             Experience luxury beauty treatments tailored just for you. Let our expert team help you
             discover your natural radiance.
           </motion.p>
+
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -49,7 +51,7 @@ export default function Hero() {
           >
             <Button
               size="lg"
-              className="bg-[#B8A088] hover:bg-[#9A846E] text-white"
+              className="bg-[#B8A088] hover:bg-[#9A846E] text-white px-8 py-6 text-lg"
               onClick={() => window.open("https://booksy.com", "_blank")}
             >
               Book Your Appointment
