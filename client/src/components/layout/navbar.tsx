@@ -65,36 +65,43 @@ export default function Navbar() {
           {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.name}
-                      href={`#${item.href}`}
-                      className="text-lg font-medium hover:text-primary transition-colors"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
-                          smoothScrollTo(item.href, 1500);
-                        });
-                      }}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                  <Button
-                    className="w-full"
-                    onClick={() => window.open("https://booksy.com", "_blank")}
-                  >
-                    Book Now
-                  </Button>
-                </div>
-              </SheetContent>
+              {({ setOpen }) => (
+                <>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Menu className="h-6 w-6" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right">
+                    <div className="flex flex-col space-y-4 mt-8">
+                      {navItems.map((item) => (
+                        <a
+                          key={item.name}
+                          href={`#${item.href}`}
+                          className="text-lg font-medium hover:text-primary transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            // Close the menu first
+                            setOpen(false);
+                            // Then scroll to the section
+                            import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
+                              smoothScrollTo(item.href, 1500);
+                            });
+                          }}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                      <Button
+                        className="w-full"
+                        onClick={() => window.open("https://booksy.com", "_blank")}
+                      >
+                        Book Now
+                      </Button>
+                    </div>
+                  </SheetContent>
+                </>
+              )}
             </Sheet>
           </div>
         </div>
