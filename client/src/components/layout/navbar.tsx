@@ -70,7 +70,10 @@ export default function Navbar() {
               className="text-sm font-medium hover:text-primary transition-colors"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick(item.href);
+                const element = document.getElementById(item.href);
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
               }}
             >
               {item.name}

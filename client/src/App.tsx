@@ -27,7 +27,28 @@ function App() {
       window.scrollTo(0, 0);
     }, 2600); // Slightly longer than the loading screen duration (2500ms)
 
-    return () => clearTimeout(timer);
+    // Fix for hash navigation after page load
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    if (window.location.hash) {
+      handleHashChange();
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   return (

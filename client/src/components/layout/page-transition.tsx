@@ -7,8 +7,7 @@ interface PageTransitionProps {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   useEffect(() => {
-    // Ensure content is visible by scrolling to top on page load/transition
-    window.scrollTo(0, 0);
+    // Don't force scroll to top, let section navigation handle scrolling
     
     // Restore smooth scrolling behavior for browser's back/forward navigation
     const handleHashChange = () => {
@@ -35,8 +34,14 @@ export default function PageTransition({ children }: PageTransitionProps) {
       transition={{ duration: 0.5 }}
       className="min-h-screen"
       onAnimationComplete={() => {
-        // Ensure content is visible after animation completes
-        window.scrollTo(0, 0);
+        // Check for hash in URL and scroll to that section if present
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       }}
     >
       {children}
