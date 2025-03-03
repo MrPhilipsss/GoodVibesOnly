@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { 
   Sheet, 
@@ -38,7 +37,7 @@ export default function Navbar() {
 
   const handleLinkClick = (href: string) => {
     setIsOpen(false); // Close mobile menu
-    
+
     // Use dynamic import for the scroll utility
     setTimeout(() => {
       import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
@@ -57,7 +56,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <img src="/assets/IMG_1150.jpeg" alt="Logo" className="h-10 w-10 rounded-full" />
+          <img src="/gvo-logo-navbar.png" alt="GVO Logo" className="h-8" /> {/* Replaced logo */}
           <span className="ml-2 text-xl font-bold">Good Vibes Only</span>
         </a>
 
