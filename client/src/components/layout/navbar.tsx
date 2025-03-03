@@ -1,5 +1,11 @@
+
 import { useState, useEffect } from "react";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { 
+  Sheet, 
+  SheetContent, 
+  SheetTitle,
+  SheetTrigger 
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 
@@ -13,99 +19,103 @@ const navItems = [
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  const handleLinkClick = (href: string) => {
+    setIsOpen(false); // Close mobile menu
+    
+    // Use dynamic import for the scroll utility
+    setTimeout(() => {
+      import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
+        smoothScrollTo(href, 1500);
+      });
+    }, 100);
+  };
+
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-2"
-          : "bg-transparent py-4"
+          ? "bg-background/80 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center space-x-2">
-            <img
-              src="/assets/IMG_1151.jpeg"
-              alt="Good Vibes Only Logo"
-              className="h-12 w-12 rounded-full"
-            />
-          </a>
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="#" className="flex items-center">
+          <img src="/assets/IMG_1150.jpeg" alt="Logo" className="h-10 w-10 rounded-full" />
+          <span className="ml-2 text-xl font-bold">Good Vibes Only</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={`#${item.href}`}
-                className="text-sm font-medium hover:text-primary transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
-                    smoothScrollTo(item.href, 1500);
-                  });
-                }}
-              >
-                {item.name}
-              </a>
-            ))}
-            <Button onClick={() => window.open("https://booksy.com", "_blank")}>
-              Book Now
-            </Button>
-          </div>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-8">
+          {navItems.map((item) => (
+            <a
+              key={item.name}
+              href={`#${item.href}`}
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick(item.href);
+              }}
+            >
+              {item.name}
+            </a>
+          ))}
+          <Button onClick={() => window.open("https://booksy.com", "_blank")}>
+            Book Now
+          </Button>
+        </div>
 
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px]">
+              <SheetTitle>Menu</SheetTitle>
+              <div className="flex flex-col space-y-4 mt-8">
+                {navItems.map((item) => (
+                  <a
+                    key={item.name}
+                    href={`#${item.href}`}
+                    className="text-lg font-medium hover:text-primary transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleLinkClick(item.href);
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                <Button
+                  className="w-full"
+                  onClick={() => window.open("https://booksy.com", "_blank")}
+                >
+                  Book Now
                 </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px]">
-                {({ setOpen }) => (
-                  <div className="flex flex-col space-y-4 mt-8">
-                    {navItems.map((item) => (
-                      <a
-                        key={item.name}
-                        href={`#${item.href}`}
-                        className="text-lg font-medium hover:text-primary transition-colors"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          // Close the sheet
-                          setOpen(false);
-                          // Then scroll to the section
-                          setTimeout(() => {
-                            import('@/lib/scroll-utils').then(({ smoothScrollTo }) => {
-                              smoothScrollTo(item.href, 1500);
-                            });
-                          }, 100);
-                        }}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                    <Button
-                      className="w-full"
-                      onClick={() => window.open("https://booksy.com", "_blank")}
-                    >
-                      Book Now
-                    </Button>
-                  </div>
-                )}
-              </SheetContent>
-            </Sheet>
-          </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
