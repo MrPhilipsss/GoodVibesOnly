@@ -27,9 +27,9 @@ export default function LoadingScreen() {
             <motion.img
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 1.5, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              src="/assets/IMG_1151.jpeg"
+              exit={{ scale: 2, opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              src="/assets/IMG_1150.jpeg"
               alt="Good Vibes Only Logo"
               className="w-40 h-40 mx-auto mb-6"
             />
