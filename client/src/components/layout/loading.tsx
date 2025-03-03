@@ -1,3 +1,5 @@
+// Loading screen component - Version 2023.03.03
+// Displays centered logo with text and fade animation
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
