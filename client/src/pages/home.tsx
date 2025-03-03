@@ -5,6 +5,8 @@ import Staff from "@/components/sections/staff";
 import Gallery from "@/components/sections/gallery";
 import Contact from "@/components/sections/contact";
 import Navbar from "@/components/layout/navbar";
+import Testimonials from "@/components/sections/testimonials"; // Added import for Testimonials component
+
 
 const fadeInUp = {
   initial: { y: 20, opacity: 0 },
@@ -22,6 +24,9 @@ export default function Home() {
           <Hero />
         </motion.div>
         <motion.div {...fadeInUp}>
+          <Testimonials /> {/* Added Testimonials component */}
+        </motion.div>
+        <motion.div {...fadeInUp}>
           <Services />
         </motion.div>
         <motion.div {...fadeInUp}>
@@ -37,3 +42,13 @@ export default function Home() {
     </div>
   );
 }
+
+// Added a minimal Testimonials component.  Replace this with your actual component.
+const Testimonials = () => {
+  return (
+    <div>
+      <h2>Testimonials</h2>
+      {/* Add your testimonial carousel or content here */}
+    </div>
+  );
+};
