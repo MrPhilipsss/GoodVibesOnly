@@ -1,39 +1,46 @@
-import { motion } from "framer-motion";
-import Hero from "@/components/sections/hero";
-import Services from "@/components/sections/services";
-import Staff from "@/components/sections/staff";
-import Gallery from "@/components/sections/gallery";
-import Contact from "@/components/sections/contact";
-import Navbar from "@/components/layout/navbar";
+import { Suspense, lazy } from "react";
+import { Navbar } from "@/components/layout/navbar";
+import { PageTransition } from "@/components/layout/page-transition";
 
-const fadeInUp = {
-  initial: { y: 20, opacity: 0 },
-  whileInView: { y: 0, opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0.5 }
-};
+const Hero = lazy(() => import("@/components/sections/hero").then((mod) => ({ default: mod.Hero })));
+const About = lazy(() => import("@/components/sections/about").then((mod) => ({ default: mod.About })));
+const Services = lazy(() => import("@/components/sections/services").then((mod) => ({ default: mod.Services })));
+const Gallery = lazy(() => import("@/components/sections/gallery").then((mod) => ({ default: mod.Gallery })));
+const Appointment = lazy(() => import("@/components/sections/appointment").then((mod) => ({ default: mod.Appointment })));
+const Testimonials = lazy(() => import("@/components/sections/testimonials").then((mod) => ({ default: mod.Testimonials })));
+const Contact = lazy(() => import("@/components/sections/contact").then((mod) => ({ default: mod.Contact })));
+const Footer = lazy(() => import("@/components/layout/footer").then((mod) => ({ default: mod.Footer })));
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <PageTransition>
       <Navbar />
       <main>
-        <motion.div {...fadeInUp}>
+        <Suspense fallback={<div>Loading...</div>}>
           <Hero />
-        </motion.div>
-        <motion.div {...fadeInUp}>
-          <Services />
-        </motion.div>
-        <motion.div {...fadeInUp}>
-          <Staff />
-        </motion.div>
-        <motion.div {...fadeInUp}>
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <Gallery />
-        </motion.div>
-        <motion.div {...fadeInUp}>
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Appointment />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Testimonials />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Services />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <Contact />
-        </motion.div>
+        </Suspense>
       </main>
-    </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Footer />
+      </Suspense>
+    </PageTransition>
   );
 }
