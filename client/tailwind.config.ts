@@ -88,7 +88,6 @@ export default {
         'toma': ['"Toma Sans"', 'sans-serif'],
       },
       }
-    },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
