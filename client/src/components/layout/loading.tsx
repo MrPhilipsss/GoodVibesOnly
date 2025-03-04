@@ -23,7 +23,7 @@ export default function LoadingScreen() {
         >
           <motion.div className="relative w-full h-full">
             <motion.img
-              src="/gvo-logo-navbar.png" // Switched logo source
+              src="/gvo-logo-loading.png" // Switched logo source
               alt="Good Vibes Only Logo"
               className="w-full h-full object-cover"
               initial={{ scale: 0.8, opacity: 0 }}
