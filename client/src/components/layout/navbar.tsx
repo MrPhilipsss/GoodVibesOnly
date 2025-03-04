@@ -106,7 +106,7 @@ export default function Navbar() {
                 ))}
                 <Button
                   className="w-full"
-                  onClick={() => window.open("https://booksy.com", "_blank")}
+                  onClick={() => window.open("https://booksy.com/pl-pl/dl/show-business/232302", "_blank")}
                 >
                   Book Now
                 </Button>
