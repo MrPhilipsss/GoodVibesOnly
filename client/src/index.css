@@ -11,3 +11,10 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: 'Toma Sans';
+  src: url('fonts/TomaSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
