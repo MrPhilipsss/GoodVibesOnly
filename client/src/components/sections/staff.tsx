@@ -2,19 +2,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const staff = [
   {
-    name: "Sarah Johnson",
+    name: "Zuza Kwiatek",
     role: "Senior Beautician",
-    image: "https://images.unsplash.com/photo-1562788869-4ed32648eb72",
+    image: "/images/zuza1.jpg",
   },
   {
-    name: "Emma Davis",
+    name: "Kamila",
     role: "Massage Therapist",
-    image: "https://images.unsplash.com/photo-1606738132449-e3590ddb6793",
+    image: "/images/zuza2.jpg",
   },
   {
-    name: "Michael Chen",
+    name: "Ktoś trzeci",
     role: "Nail Artist",
-    image: "https://images.unsplash.com/photo-1550362512-ed3554c736ea",
+    image: "/images/zuza3.jpg",
   },
 ];
 

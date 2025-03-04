@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const images = [
-  "https://images.unsplash.com/photo-1500051638674-ff996a0ec29e",
-  "https://images.unsplash.com/photo-1518707598572-8cf7dabd8f66",
-  "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
-  "https://images.unsplash.com/photo-1518998053901-5348d3961a04",
-  "https://images.unsplash.com/photo-1507643179773-3e975d7ac515",
-  "https://images.unsplash.com/photo-1658314756268-3552b9ba2784",
-  "https://images.unsplash.com/photo-1534103704502-96e3a4ed093b",
-  "https://images.unsplash.com/photo-1502078889459-923ef351c722",
+  "/images/brwi1s.jpg",
+  "/images/brwi2s.jpg",
+  "/images/brwi3s.jpg",
+  "/images/brwi4s.jpg",
+  "/images/rzesy1s.jpg",
+  "/images/rzesy2s.jpg",
+  "/images/rzesy3s.jpg",
+  "/images/rzesy4s.jpg",
 ];
 
 export default function Gallery() {
