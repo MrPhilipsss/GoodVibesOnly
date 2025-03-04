@@ -2,19 +2,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
   {
-    title: "Facial Treatments",
-    description: "Customized facials for all skin types",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+    title: "Robimy brewki",
+    description: "Zrobimy Ci brewki najlepsze",
+    image: "/images/lam-brwi.jpg",
   },
   {
-    title: "Massage Therapy",
-    description: "Relaxing and therapeutic massages",
-    image: "https://images.unsplash.com/photo-1487412912498-0447578fcca8",
+    title: "Robimy rzęski",
+    description: "A rzęski jeszcze lepsze",
+    image: "/images/pazy.jpg",
   },
   {
-    title: "Nail Care",
-    description: "Professional manicure and pedicure",
-    image: "https://images.unsplash.com/photo-1632345031435-8727f6897d53",
+    title: "Robimy pazki",
+    description: "Pazy no... najlepsze",
+    image: "/images/lam-rzes.jpg",
   },
 ];
 
